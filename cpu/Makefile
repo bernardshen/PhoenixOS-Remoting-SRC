@@ -157,7 +157,7 @@ LIB_FLAGS += -lprotobuf-lite
 LIB_FLAGS += -lprotoc
 LIB_FLAGS += -luuid
 
-CC_FLAGS += -std=c++17 -w -fpermissive $(INC_FLAGS) -O0
+CC_FLAGS += -std=c++17 -w -fpermissive $(INC_FLAGS) -O0 -g -ggdb
 # TODO: use extern in header files instead of direct definition e.g. in cpu-common.h to remove -fcommon flag
 CC_FLAGS += -fcommon
 CC_FLAGS += -D$(VERSION)

@@ -8,7 +8,7 @@
 
 #define CD_SOCKET_PATH "/tmp/cricketd_sock"
 #ifndef LOG_LEVEL
-    #define LOG_LEVEL LOG_ERROR
+    #define LOG_LEVEL LOG_DBG(2)
 #endif //LOG_LEVEL
 
 #define CHECK_CU(cmd) do {                      \

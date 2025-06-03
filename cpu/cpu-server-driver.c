@@ -59,11 +59,13 @@ bool_t rpc_elf_load_1_svc(mem_data elf, ptr module_key, int *result, struct svc_
 
 #else // POS_ENABLE
 
+    printf("rpc_elf_load(elf: %p, len: %#x, module_key: %#x)\n", elf.mem_data_val, elf.mem_data_len, module_key);
     LOGE(LOG_DEBUG, "rpc_elf_load(elf: %p, len: %#x, module_key: %#x)", elf.mem_data_val, elf.mem_data_len, module_key);
 
     int proc = 51;
     cpu_time_start(vanillas, proc);
     if ((res = cuModuleLoadData(&module, elf.mem_data_val)) != CUDA_SUCCESS) {
+        printf("cuModuleLoadData failed: %d\n", res);
         LOGE(LOG_ERROR, "cuModuleLoadData failed: %d", res);
         *result = res;
         return 1;
@@ -73,6 +75,7 @@ bool_t rpc_elf_load_1_svc(mem_data elf, ptr module_key, int *result, struct svc_
     // We add our module using module_key as key. This means a fatbinaryHandle on the client is translated
     // to a CUmodule on the server.
     if ((res = resource_mg_add_sorted(&rm_modules, (void*)module_key, (void*)module)) != CUDA_SUCCESS) {
+        printf("resource_mg_create failed: %d\n", res);
         LOGE(LOG_ERROR, "resource_mg_create failed: %d", res);
         *result = res;
         return 1;

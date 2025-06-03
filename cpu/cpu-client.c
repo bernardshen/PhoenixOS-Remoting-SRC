@@ -83,7 +83,7 @@ resource_mg rm_cudnn_backendds;
     POSAgent *pos_agent;
 
     void __attribute__((constructor)) init_pos(void){
-        pos_agent = new POSAgent();
+        pos_agent = new POSAgent(); // pos/src/agent.cpp
         POS_CHECK_POINTER(pos_agent);
     }
 
@@ -231,7 +231,7 @@ void __attribute__((constructor)) init_rpc(void)
     int_result result_2;
     char *printmessage_1_arg1 = "hello";
 
-    LOG(LOG_DBG(1), "log level is %d", LOG_LEVEL);
+    LOG(LOG_INFO, "log level is %d", LOG_LEVEL);
     init_log(LOG_LEVEL, __FILE__);
     rpc_connect();
 
@@ -304,7 +304,7 @@ void *dlopen(const char *filename, int flag)
     void *ret = NULL;
     struct link_map *map;
     int has_kernel = 0;
-    LOG(LOG_DBG(1), "intercepted dlopen(%s, %d)", filename, flag);
+    LOG(LOG_DEBUG, "intercepted dlopen(%s, %d)", filename, flag);
 
     // if (filename == NULL) {
     //     return dlopen_orig(filename, flag);
