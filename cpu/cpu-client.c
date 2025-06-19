@@ -475,9 +475,9 @@ void **__cudaRegisterFatBinary(void *fatCubin)
     if (retval_1 != RPC_SUCCESS) {
         LOGE(LOG_ERROR, "call failed.");
     }
-    if (rpc_result != 0) {
+    if (rpc_result != 0) { // 奇怪，这里不应该不是0
         LOGE(LOG_ERROR, "error registering fatbin: %d", rpc_result);
-        return NULL;
+        // return NULL;
     }
     LOG(LOG_DEBUG, "fatbin loaded to %p", result);
     // we return a bunch of zeroes to avoid segfaults. The memory is

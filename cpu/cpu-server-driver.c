@@ -49,7 +49,7 @@ bool_t rpc_elf_load_1_svc(mem_data elf, ptr module_key, int *result, struct svc_
 #ifdef POS_ENABLE
 
     res = pos_cuda_ws->pos_process( 
-        /* api_id */ rpc_cuModuleLoad, 
+        /* api_id */ rpc_cuModuleLoad,  // pos/cuda_impl/src/worker/cuda_driver.cpp
         /* uuid */ 0, 
         /* param_desps */ {
             { .value = &module_key, .size = sizeof(ptr) },

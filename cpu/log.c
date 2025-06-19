@@ -97,6 +97,7 @@ void loggf(log_level level, const char* formatstr, ... )
 	printf("%s %s:\t", time, to_string(level));
 	vprintf(formatstr, vararg);
 	printf("\n");
+	fflush(stdout);
 }
 
 void loggfe(log_level level, int line, const char* file, const char* formatstr, ... )
@@ -120,4 +121,5 @@ void loggfe(log_level level, int line, const char* file, const char* formatstr, 
 #else
 	printf("\tin \033[4m%s:%d\033[0m\n", stripped, line);
 #endif //NOCOLORS
+	fflush(stdout);
 }

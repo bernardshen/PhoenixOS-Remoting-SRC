@@ -1580,6 +1580,7 @@ bool_t cuda_malloc_1_svc(size_t argp, ptr_result *result, struct svc_req *rqstp)
 {   
 #ifdef POS_ENABLE
 
+    // 完全绕过了 cricket 原本的执行逻辑，进入 POS 处理逻辑
     result->err = pos_cuda_ws->pos_process( 
         /* api_id */ CUDA_MALLOC, 
         /* uuid */ 0, 
